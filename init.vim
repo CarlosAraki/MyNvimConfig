@@ -7,6 +7,7 @@ call plug#begin()
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'roxma/nvim-completion-manager'
 	Plug 'junegunn/fzf.vim'
+	Plug 'goerz/jupytext.vim'
 	Plug 'preservim/nerdtree'
 call plug#end()
 
@@ -26,4 +27,5 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<space>
+map <c-t> :NERDTreeToggle<cr>
 
