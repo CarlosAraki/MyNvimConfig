@@ -5,9 +5,9 @@ call plug#begin()
 	Plug 'dense-analysis/ale'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
 	Plug 'roxma/nvim-completion-manager'
-
+	Plug 'junegunn/fzf.vim'
+	Plug 'preservim/nerdtree'
 call plug#end()
 
 colorscheme gruvbox
