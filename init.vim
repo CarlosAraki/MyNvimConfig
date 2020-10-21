@@ -9,6 +9,7 @@ call plug#begin()
 	Plug 'junegunn/fzf.vim'
 	Plug 'goerz/jupytext.vim'
 	Plug 'preservim/nerdtree'
+	Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 colorscheme gruvbox
@@ -18,6 +19,8 @@ set number
 set relativenumber
 set mouse=a
 set inccommand=split
+set clipboard=unnamedplus
+set ts=4 sw=4 sts=4 et
 
 let mapleader="/<space>"
 nnoremap <leader>; A;<esc>
@@ -28,4 +31,4 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<space>
 map <c-t> :NERDTreeToggle<cr>
-
+map <c-l> :BlamerToggle<cr>
