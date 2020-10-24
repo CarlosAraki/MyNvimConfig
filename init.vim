@@ -1,5 +1,6 @@
 call plug#begin()
 	Plug 'morhetz/gruvbox'
+	Plug 'sotte/presenting.vim'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'sheerun/vim-polyglot' 
 	Plug 'dense-analysis/ale'
