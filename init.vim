@@ -3,6 +3,7 @@
 call plug#begin()
 	Plug 'morhetz/gruvbox'
 	Plug 'preservim/nerdcommenter'
+	Plug 'tpope/vim-fugitive'
 	Plug 'mzlogin/vim-markdown-toc'
 	Plug 'sotte/presenting.vim'
 	Plug 'terryma/vim-multiple-cursors'
@@ -27,13 +28,17 @@ set mouse=a
 set inccommand=split
 set clipboard=unnamedplus
 set ts=4 sw=4 sts=4 et
+set timeoutlen=5000 
 
 let mapleader=" "
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
-nnoremap <leader>rv :vsplit ~/Documents/Man/CRED/remember.md<cr>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>cred :vsplit ~/Documents/Man/CRED/remember.md<cr>
+nnoremap <leader>man :vsplit ~/Documents/Man/new.md<cr>
+nnoremap <leader>pwd :echo expand('%:p') <cr>
 nnoremap <leader>ga :!{hub add .}<cr>
-nnoremap <leader>gc :!{hub commit -m "}
-nnoremap <leader>gph :!{hub push }<cr>
+nnoremap <leader>gc :!{hub commit -m ""}
+nnoremap <leader>gph :!{hub push }
 nnoremap <leader>gpl :!{hub pull }<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
