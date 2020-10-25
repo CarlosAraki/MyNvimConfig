@@ -64,10 +64,10 @@ set t_Co=256
 "set tabline+=\ %{battery#component()}
 "set tabline+=\ 
 "let g:airline_statusline_ontop=1
-"
-let g:airline_theme='deus'
 "let g:battery#update_tabline = 1    " For tabline.
 "let g:battery#update_tabline = 1 " For statusline.
+
+let g:airline_theme='deus'
 let mapleader=" "
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
