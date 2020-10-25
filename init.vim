@@ -1,8 +1,10 @@
 ":GenTocGFM Cria Sumário em md 
 ":PresentingStart Modo de apresentacao
 call plug#begin()
+	Plug 'mateusbraga/vim-spell-pt-br' 
 	Plug 'morhetz/gruvbox'
 	Plug 'preservim/nerdcommenter'
+	Plug 'airblade/vim-gitgutter'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
     Plug 'lambdalisue/battery.vim'
@@ -22,7 +24,7 @@ call plug#begin()
 call plug#end()
 
 colorscheme gruvbox
-
+set spell spelllang=pt
 set hidden
 set number
 set showcmd
@@ -36,46 +38,20 @@ set inccommand=split
 set clipboard=unnamedplus
 set ts=4 sw=4 sts=4 et
 set timeoutlen=5000 
-let g:airline_powerline_fonts = 1
 set t_Co=256
-
-"function! GitBranch()
-  "return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-"endfunction
-
-"function! StatuslineGit()
-  "let l:branchname = GitBranch()
-  "return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-"endfunction
-
-"set tabline=
-"set tabline+=%#PmenuSel#
-"set tabline+=%{StatuslineGit()}
-"set tabline+=%#LineNr#
-"set tabline+=\ %f
-"set tabline+=%m\
-"set tabline+=%=
-"set tabline+=%#CursorColumn#
-"set tabline+=\ %y
-"set tabline+=\ %{&fileencoding?&fileencoding:&encoding}
-"set tabline+=\[%{&fileformat}\]
-"set tabline+=\ %p%%
-"set tabline+=\ %l:%c
-"set tabline+=\ %{battery#component()}
-"set tabline+=\ 
-"let g:airline_statusline_ontop=1
-"let g:battery#update_tabline = 1    " For tabline.
-"let g:battery#update_tabline = 1 " For statusline.
-
-let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
 let mapleader=" "
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>m :call mkdir(expand("%:p:h"), "p")<cr>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cred :vsplit ~/Documents/Man/CRED/remember.md<cr>
 nnoremap <leader>man :vsplit ~/Documents/Man/new.md<cr>
 nnoremap <leader>pwd :echo expand('%:p') <cr>
 nnoremap <leader>ga :Git add . <cr>
+nnoremap <leader>pt :set spell spelllang=pt<cr>
+nnoremap <leader>en :set spell spelllang=en_us<cr>
 nnoremap <leader>gc :Git commit <cr>
+nnoremap <leader>t :Toch <cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <leader>bn :bn<cr>
