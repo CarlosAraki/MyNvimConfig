@@ -2,8 +2,11 @@
 ":PresentingStart Modo de apresentacao
 call plug#begin()
 	Plug 'mateusbraga/vim-spell-pt-br' 
-	Plug 'ashisha/image.vim'
+	"Plug 'ashisha/image.vim'
 	Plug 'morhetz/gruvbox'
+	Plug 'vim-vdebug/vdebug'
+    Plug 'junegunn/vim-emoji'
+	Plug 'neoclide/coc.nvim', {'branch':'release'}
 	Plug 'preservim/nerdcommenter'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'vim-airline/vim-airline'
@@ -40,8 +43,12 @@ set clipboard=unnamedplus
 set ts=4 sw=4 sts=4 et
 set timeoutlen=5000 
 set t_Co=256
+
+let g:vdebug_options = {}
+let g:vdebug_options["port"] = 9000
 let g:airline_powerline_fonts = 1
 let mapleader=" "
+
 
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -55,6 +62,7 @@ nnoremap <leader>cred :vsplit ~/Documents/Man/CRED/remember.md<cr>
 nnoremap <leader>man :vsplit ~/Documents/Man/new.md<cr>
 nnoremap <leader>pwd :echo expand('%:p') <cr>
 nnoremap <leader>ga :Git add . <cr>
+nnoremap <leader>w :w <cr>
 nnoremap <leader>pt :set spell spelllang=pt<cr>
 nnoremap <leader>en :set spell spelllang=en_us<cr>
 nnoremap <leader>gc :Git commit <cr>
