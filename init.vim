@@ -4,9 +4,10 @@ call plug#begin()
 	Plug 'mateusbraga/vim-spell-pt-br' 
     Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'thaerkh/vim-indentguides'
 	"Plug 'ashisha/image.vim'
 	Plug 'morhetz/gruvbox'
-	Plug 'vim-vdebug/vdebug'
+    "Plug 'vim-vdebug/vdebug'
     Plug 'junegunn/vim-emoji'
 	Plug 'neoclide/coc.nvim', {'branch':'release'}
 	Plug 'preservim/nerdcommenter'
@@ -46,8 +47,8 @@ set ts=4 sw=4 sts=4 et
 set timeoutlen=5000 
 set t_Co=256
 
-let g:vdebug_options = {}
-let g:vdebug_options["port"] = 9000
+"let g:vdebug_options = {}
+"let g:vdebug_options["port"] = 9000
 let g:airline_powerline_fonts = 1
 let mapleader=" "
 
@@ -82,3 +83,12 @@ nnoremap <leader>ls :ls<cr>
 nnoremap <c-f> :Ag<space>
 map <c-t> :NERDTreeToggle<cr>
 map <c-l> :BlamerToggle<cr>
+
+
+" Configurações do Vim IndentGuides
+
+let g:indentguides_spacechar = '▏'
+let g:indentguides_tabchar = '▏'
+
+" Fim das configurações do Vim IndentGuides
+
