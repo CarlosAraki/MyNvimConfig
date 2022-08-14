@@ -2,6 +2,8 @@
 ":PresentingStart Modo de apresentacao
 call plug#begin()
 	Plug 'mateusbraga/vim-spell-pt-br' 
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	"Plug 'ashisha/image.vim'
 	Plug 'morhetz/gruvbox'
 	Plug 'vim-vdebug/vdebug'
