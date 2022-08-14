@@ -7,6 +7,7 @@ call plug#begin()
     Plug 'thaerkh/vim-indentguides'
 	"Plug 'ashisha/image.vim'
 	Plug 'morhetz/gruvbox'
+    Plug 'gko/vim-coloresque'
     "Plug 'vim-vdebug/vdebug'
     Plug 'junegunn/vim-emoji'
 	Plug 'neoclide/coc.nvim', {'branch':'release'}
@@ -80,6 +81,7 @@ nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bd :bd<cr>
 nnoremap <leader>ls :ls<cr>
+vnoremap <C-c> "+y<CR>
 nnoremap <c-f> :Ag<space>
 map <c-t> :NERDTreeToggle<cr>
 map <c-l> :BlamerToggle<cr>
