@@ -3,7 +3,7 @@
 call plug#begin()
 	Plug 'mateusbraga/vim-spell-pt-br' 
     Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+ "   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'thaerkh/vim-indentguides'
 	"Plug 'ashisha/image.vim'
 	Plug 'morhetz/gruvbox'
@@ -70,13 +70,13 @@ nnoremap <leader>w :w <cr>
 nnoremap <leader>pt :set spell spelllang=pt<cr>
 nnoremap <leader>en :set spell spelllang=en_us<cr>
 nnoremap <leader>gc :Git commit <cr>
-nnoremap <leader>F :.!toilet -w 200 -f standard <cr>
-nnoremap <leader>f :.!toilet -w 200 -f small <cr>
-nnoremap <leader>1 :.!toilet -w 200 -f term -F border <cr>
+nnoremap <leader>F :.!toilet -w 200  <cr>
+nnoremap <leader>f :.!toilet -w 200 <cr>
+nnoremap <leader>1 :.!toilet -w 200 -F border <cr>
 nnoremap <leader>t :Toch <cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
-nnoremap <leader>BD :!bd<cr>
+nnoremap <leader>fbd :bd!<cr>
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bd :bd<cr>
@@ -93,4 +93,3 @@ let g:indentguides_spacechar = '▏'
 let g:indentguides_tabchar = '▏'
 
 " Fim das configurações do Vim IndentGuides
-
