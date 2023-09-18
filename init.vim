@@ -6,11 +6,11 @@ call plug#begin()
  "   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'thaerkh/vim-indentguides'
 	"Plug 'ashisha/image.vim'
-	Plug 'morhetz/gruvbox'
+	"Plug 'morhetz/gruvbox'
     Plug 'gko/vim-coloresque'
     "Plug 'vim-vdebug/vdebug'
     Plug 'junegunn/vim-emoji'
-	Plug 'neoclide/coc.nvim', {'branch':'release'}
+	"Plug 'neoclide/coc.nvim', {'branch':'release'}
 	Plug 'preservim/nerdcommenter'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'vim-airline/vim-airline'
@@ -29,16 +29,17 @@ call plug#begin()
 	Plug 'goerz/jupytext.vim'
 	Plug 'preservim/nerdtree'
 	Plug 'APZelos/blamer.nvim'
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
-colorscheme gruvbox
+colorscheme catppuccin
 set spell spelllang=pt
 set hidden
 set number
 set showcmd
 set relativenumber
 set encoding=utf-8
-set history=1000
+set history=10000
 set noswapfile
 set mouse=a
 set switchbuf=usetab
