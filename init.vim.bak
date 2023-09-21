@@ -37,7 +37,7 @@ colorscheme catppuccin
 set spell spelllang=pt
 set autowrite
 set hidden
-#set backup
+set backup
 set list
 set listchars=tab:>-,trail:-
 set number
