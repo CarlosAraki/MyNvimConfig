@@ -3,14 +3,11 @@
 call plug#begin()
 	Plug 'mateusbraga/vim-spell-pt-br' 
     Plug 'ryanoasis/vim-devicons'
- "   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'thaerkh/vim-indentguides'
-	"Plug 'ashisha/image.vim'
-	"Plug 'morhetz/gruvbox'
+    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'tomasr/molokai'
     Plug 'gko/vim-coloresque'
-    "Plug 'vim-vdebug/vdebug'
     Plug 'junegunn/vim-emoji'
-	"Plug 'neoclide/coc.nvim', {'branch':'release'}
 	Plug 'preservim/nerdcommenter'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'vim-airline/vim-airline'
@@ -25,19 +22,18 @@ call plug#begin()
 	Plug 'dense-analysis/ale'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	"Plug 'roxma/nvim-completion-manager'
 	Plug 'junegunn/fzf.vim'
 	Plug 'goerz/jupytext.vim'
 	Plug 'preservim/nerdtree'
 	Plug 'APZelos/blamer.nvim'
-    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
-colorscheme catppuccin
+set background=dark
+colorscheme PaperColor
 set spell spelllang=pt
 set autowrite
 set hidden
-#set backup
+"set backup
 set list
 set listchars=tab:>-,trail:-
 set number
@@ -71,8 +67,6 @@ inoremap { {}<left>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>m :call mkdir(expand("%:p:h"), "p")<cr>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>cred :vsplit ~/Documents/Man/CRED/remember.md<cr>
-nnoremap <leader>man :vsplit ~/Documents/Man/new.md<cr>
 nnoremap <leader>pwd :echo expand('%:p') <cr>
 nnoremap <leader>ga :Git add . <cr>
 nnoremap <leader>w :w <cr>
