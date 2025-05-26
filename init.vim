@@ -76,7 +76,6 @@ nnoremap <leader>gc :Git commit <cr>
 nnoremap <leader>F :.!toilet -w 200  <cr>
 nnoremap <leader>f :.!toilet -w 200 <cr>
 nnoremap <leader>1 :.!toilet -w 200 -F border <cr>
-nnoremap <leader>t :Toch <cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 nnoremap <c-p> :Files<cr>
 nnoremap <leader>fbd :bd!<cr>
