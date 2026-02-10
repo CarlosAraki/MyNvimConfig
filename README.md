@@ -97,4 +97,17 @@ let g:indentguides_spacechar = '▏'  " Guias de indentação bonitos
 5. `:set spell` - Ativa corretor ortográfico
 
 > Configuração completa disponível em `~/.config/nvim/init.vim`
-```
+
+## Para Passar para um server 
+# Substitua "user@host" pelo servidor que você quer configurar
+ssh user@host "mkdir -p ~/.config/nvim && curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+scp ~/.config/nvim/init.vim user@host:~/.config/nvim/
+
+# Para Editar diretamente no server 
+nvim scp://usuario@ip-do-servidor//caminho/do/arquivo
+
+# Para editar on-time 
+mkdir ~/Mounts/ServidorX
+sshfs user@ip-do-servidor:/var/www/projeto ~/Mounts/ServidorX
+-- Obs : Precisa de um brew install sshfs 
+

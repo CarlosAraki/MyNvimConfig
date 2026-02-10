@@ -1,6 +1,11 @@
-":GenTocGFM Cria Sumário em md 
+""GenTocGFM Cria Sumário em md 
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let mapleader=" "
 ":PresentingStart Modo de apresentacao
-call plug#begin()
+call plug#begin('~/.config/nvim/plugged') " Caminho explícito evita confusão -- call plug#begin()
 	Plug 'mateusbraga/vim-spell-pt-br' 
     Plug 'ryanoasis/vim-devicons'
     Plug 'thaerkh/vim-indentguides'
@@ -28,8 +33,14 @@ call plug#begin()
 	Plug 'APZelos/blamer.nvim'
 call plug#end()
 
+set termguicolors
 set background=dark
-colorscheme PaperColor
+augroup FixThemeStartup
+    autocmd!
+    " O ++nested permite que o colorscheme ative outros eventos necessários
+    autocmd VimEnter * ++nested colorscheme PaperColor
+augroup END
+
 set spell spelllang=pt
 set autowrite
 set hidden
@@ -51,13 +62,12 @@ set ignorecase
 set clipboard=unnamedplus
 set ts=4 sw=4 sts=4 et
 set timeoutlen=5000 
-set t_Co=256
-
+"set t_Co=256
 "let g:vdebug_options = {}
 "let g:vdebug_options["port"] = 9000
 let g:airline_powerline_fonts = 1
-let mapleader=" "
 
+let g:airline_theme='papercolor'
 
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -94,4 +104,6 @@ map <c-l> :BlamerToggle<cr>
 let g:indentguides_spacechar = '▏'
 let g:indentguides_tabchar = '▏'
 
+syntax on
+filetype plugin indent on
 " Fim das configurações do Vim IndentGuides
