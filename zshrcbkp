@@ -1,0 +1,186 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="jonathan"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
+source <(fzf --zsh)
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt appendhistory
+setopt SHARE_HISTORY
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+
+
+
+
+# ---------------------------------------------
+# 🛠️ FUNÇÃO SUPER SSHFS (Genérica e Otimizada)
+# ---------------------------------------------
+function montar-server() {
+    # Define onde vai montar (Padrão: pasta RemoteServer na sua Home)
+    local MOUNT_POINT="$HOME/RemoteServer"
+    
+    # Opções de Performance para Mac M1 (Cache, Compressão, KeepAlive)
+    local OPTS="-o Reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,cache=yes,kernel_cache,compression=yes,Ciphers=aes128-ctr,defer_permissions,noappledouble,volname=RemoteDrive"
+
+    # Variáveis
+    local KEY_OPT=""
+    local USER=""
+    local IP=""
+    local REMOTE_PATH=""
+
+    # Lógica: Detecta se passou 3 ou 4 argumentos
+    if [[ $# -eq 4 ]]; then
+        # 4 argumentos: O primeiro é a chave .pem
+        echo "🔑 Usando chave: $1"
+        KEY_OPT="-o IdentityFile=$1"
+        USER=$2
+        IP=$3
+        REMOTE_PATH=$4
+    elif [[ $# -eq 3 ]]; then
+        # 3 argumentos: Sem chave (vai pedir senha ou usar chave padrão)
+        USER=$1
+        IP=$2
+        REMOTE_PATH=$3
+    else
+        echo "❌ Uso incorreto!"
+        echo "   Com chave: montar-server chave.pem usuario ip /caminho"
+        echo "   Sem chave: montar-server usuario ip /caminho"
+        return 1
+    fi
+
+    # Cria a pasta se não existir
+    if [ ! -d "$MOUNT_POINT" ]; then
+        mkdir -p "$MOUNT_POINT"
+    fi
+
+    # Garante que está desmontado antes de tentar
+    umount -f "$MOUNT_POINT" 2>/dev/null
+
+    echo "🔌 Conectando a $USER@$IP:$REMOTE_PATH..."
+    
+    # O Comando Mágico
+    sshfs $OPTS $KEY_OPT "$USER@$IP:$REMOTE_PATH" "$MOUNT_POINT"
+
+    # Verifica se deu certo
+    if [ $? -eq 0 ]; then
+        echo "✅ Sucesso! Acessível em: $MOUNT_POINT"
+        # Abre a pasta no Finder para confirmar (opcional)
+        # open "$MOUNT_POINT"
+    else
+        echo "💥 Falha ao montar. Verifique os dados."
+    fi
+}
+
+# Atalho para desmontar
+alias desmontar-server="diskutil unmount force ~/RemoteServer 2>/dev/null || umount -f ~/RemoteServer && echo '🗑️ Desmontado!'"
+
+# Nmap Rápido (Scan de portas abertas na rede local)
+alias scan-rede="nmap -F 192.168.1.0/24"
+
+# Ver meu IP Público e Local
+alias meu-ip="curl ifconfig.me; echo; ipconfig getifaddr en0"
+# Inicia o Tmux com uma colinha lateral
+alias dev="tmux new-session -A -s Main \; split-window -h -l 35 'view ~/.cheat_sheet.md' \; select-pane -t 0"
