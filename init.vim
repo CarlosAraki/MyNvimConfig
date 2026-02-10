@@ -98,7 +98,7 @@ nnoremap <c-f> :Ag<space>
 map <c-t> :NERDTreeToggle<cr>
 map <c-l> :BlamerToggle<cr>
 
-
+command! W w !sudo tee % > /dev/null
 " Configurações do Vim IndentGuides
 
 let g:indentguides_spacechar = '▏'
